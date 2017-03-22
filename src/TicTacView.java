@@ -31,8 +31,8 @@ public class TicTacView extends Canvas implements MouseListener {
 		this.viewController = viewController;
 		
 		try {
-		    circle = ImageIO.read(new File("circle.png"));
-		    cross = ImageIO.read(new File("cross.png"));
+		    circle = ImageIO.read(getClass().getResource("circle.png"));
+		    cross = ImageIO.read(getClass().getResource("cross.png"));
 		} catch (IOException e) {
 			System.out.println(e);
 		}		
