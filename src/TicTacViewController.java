@@ -23,7 +23,7 @@ public class TicTacViewController implements ActionListener {
 		model = new TicTacModel();
 		
 		JFrame frame = new JFrame("TicTacToe");
-		frame.setBounds(100, 100, 485, 600);
+		frame.setBounds(100, 100, 2*xOrig + 2*xOffset + 3 * size, 600);
 		this.frame = frame;
 		
 		JLabel winLabel = new JLabel("");
