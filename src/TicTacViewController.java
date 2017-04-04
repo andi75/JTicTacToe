@@ -1,3 +1,4 @@
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -6,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class TicTacViewController implements ActionListener {
+	static final String version = "1.0.1";
 	
 	TicTacView views[] = new TicTacView[9];
 	TicTacModel model;
@@ -18,12 +20,30 @@ public class TicTacViewController implements ActionListener {
 	int xOffset = 10; int yOffset = 10;
 	int size = 135;
 	
+	int buttonSpacing = 60;
+	int buttonWidth = 80;
+	int buttonHeight = 20;
+	
 	public TicTacViewController()
 	{
 		model = new TicTacModel();
 		
 		JFrame frame = new JFrame("TicTacToe");
-		frame.setBounds(100, 100, 2*xOrig + 2*xOffset + 3 * size, 600);
+		frame.setLayout(null);
+		frame.pack();
+		// For some reason, Insets are not available
+		// before frame.pack() is called
+		Insets insets = frame.getInsets();
+		System.out.println(insets);
+		
+		int contentWidth = 2*xOrig + 2*xOffset + 3 * size;
+		int contentHeight = 2*yOrig + 3 * yOffset + 3 * size +
+				buttonSpacing + buttonHeight;
+		int width = contentWidth + insets.left + insets.right;
+		int height = contentHeight + insets.top + insets.bottom;
+		
+		frame.setBounds(100, 100, width, height);
+		
 		this.frame = frame;
 		
 		JLabel winLabel = new JLabel("");
@@ -32,7 +52,7 @@ public class TicTacViewController implements ActionListener {
 		this.winLabel = winLabel;
 		
 		JButton clearButton = new JButton("Clear");
-		clearButton.setBounds(frame.getWidth() / 2 - 40, yOrig + 3 * yOffset + 3 * size + 60, 80, 20);
+		clearButton.setBounds(frame.getWidth() / 2 - buttonWidth / 2, yOrig + 3 * yOffset + 3 * size + buttonSpacing, buttonWidth, buttonHeight);
 		clearButton.addActionListener(this);
 		frame.add(clearButton);
 		this.clearButton = clearButton;
@@ -49,7 +69,6 @@ public class TicTacViewController implements ActionListener {
 				views[id] = view;
 			}
 		}
-		frame.setLayout(null);
 		frame.setVisible(true);		
 	}
 	
