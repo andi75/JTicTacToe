@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class TicTacView extends JPanel implements MouseListener {	
+public class TicTacView extends JPanel implements MouseListener {
 	Image circle = null, cross = null;
 	
 	final int STATE_EMPTY = 0;
@@ -40,6 +40,7 @@ public class TicTacView extends JPanel implements MouseListener {
 	
 	public void paintComponent(Graphics g)
 	{
+		super.paintComponent(g);
 		switch(state)
 		{
 		case STATE_CROSS:
