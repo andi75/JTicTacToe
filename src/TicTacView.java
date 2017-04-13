@@ -1,5 +1,4 @@
 import java.awt.BasicStroke;
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -7,12 +6,13 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.RoundRectangle2D;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
-public class TicTacView extends Canvas implements MouseListener {	
+@SuppressWarnings("serial")
+public class TicTacView extends JPanel implements MouseListener {	
 	Image circle = null, cross = null;
 	
 	final int STATE_EMPTY = 0;
@@ -38,7 +38,7 @@ public class TicTacView extends Canvas implements MouseListener {
 		}		
 	}
 	
-	public void paint(Graphics g)
+	public void paintComponent(Graphics g)
 	{
 		switch(state)
 		{
